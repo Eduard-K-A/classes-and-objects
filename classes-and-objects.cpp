@@ -54,7 +54,7 @@ int main()
     default:
         // exit
     }
-    cout << "hello" << endl;
+    cout << "hello world" << endl;
 
     return 0;
 }
