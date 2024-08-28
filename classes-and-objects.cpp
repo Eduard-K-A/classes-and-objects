@@ -13,8 +13,9 @@ private:
 public:
     void addBook(){ //asks the user to input author name
         cout << "Enter author name: ";
-        cin.ignore();
+        cin.ignore();   
         getline(cin, author);
+        cout << "Added succesfully" << endl;
     }
 
     void displayBook(){ //displays book details
@@ -54,7 +55,6 @@ int main()
     default:
         // exit
     }
-    cout << "hello world" << endl;
-
+    cout << "hello world!!!" << endl;
     return 0;
 }
