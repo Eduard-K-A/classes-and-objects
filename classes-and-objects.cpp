@@ -5,12 +5,20 @@ using namespace std;
 
 int bookCounter = 0;
 
+/*
+*things to do*
+validations:
+    - fix user input, accept only integers in addBook() function
+    -fix displayBook() year part (garbage value)
+
+*/
+
 class Library
 {
 private:
     string author[100];
     string title[100];
-    int publishDate[100];
+     int publishDate[100] = {};
     string titleMatch = "";
 
 public:
@@ -21,13 +29,14 @@ public:
         // cin.ignore();
         getline(cin, title[bookCounter]);
 
-        cout << "Enter author name: ";
+        cout << "Enter Author name: ";
         // cin.ignore();
         getline(cin, author[bookCounter]);
-
-    
+        
+        do{
         cout << "Enter Publication Year: ";
         cin >> publishDate[bookCounter];
+        }while (publishDate[bookCounter] < 0 || publishDate[bookCounter] >= 4000);
 
         cout << "Book Added Successfully!" << endl;
         bookCounter++;
@@ -46,7 +55,8 @@ public:
         cout << setw(20) << "Title" << setw(20) << "Author" << setw(20) << "Year" << endl;
         for (int i = 0; i <= bookCounter; i++)
         {
-            cout << setw(20) << title[i] << setw(20) << author[i] << setw(20) << publishDate[i] << endl;
+         cout << setw(20) << title[i] << setw(20) << author[i] << setw(20) << publishDate[i] << endl;
+
         }
         return 0;
     }
@@ -121,7 +131,7 @@ int main()
             exit = false;
         }
     } while (exit == true);
-    cout << "done" << endl;
+    cout << "Thank you!" << endl;
 
     return 0;
 }
