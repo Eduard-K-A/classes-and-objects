@@ -4,45 +4,79 @@
 using namespace std;
 
 int bookCounter = 0;
+
 class Library
 {
 private:
-    string author;
-    string title;
-    int publishDate;
+    string author[100];
+    string title[100];
+    int publishDate[100];
+    string titleMatch = "";
 
 public:
     void addBook()
     { // asks the user to input book details
 
         cout << "Enter Title name: ";
-        cin.ignore();
-        getline(cin, title);
+        // cin.ignore();
+        getline(cin, title[bookCounter]);
 
         cout << "Enter author name: ";
-        cin.ignore();
-        getline(cin, author);
+        // cin.ignore();
+        getline(cin, author[bookCounter]);
 
+    
         cout << "Enter Publication Year: ";
-        cin >> publishDate;
+        cin >> publishDate[bookCounter];
 
-        cout << "Book Added Succesfully!" << endl;
+        cout << "Book Added Successfully!" << endl;
         bookCounter++;
+
         // cout << bookCounter << endl;
     }
 
-    void displayBook()
+    int displayBook()
     { // displays book details
-        cout << "Title" << setw(20) << "Author" << setw(20) << "Year" << endl;
-        cout << title << setw(20) << author << setw(20) << publishDate << endl;
+    if (bookCounter == 0)
+        {
+            cout << "No Books In The Library To Display, Try Adding Some in the Menu." << endl;
+            return 0;
+        }
+
+        cout << setw(20) << "Title" << setw(20) << "Author" << setw(20) << "Year" << endl;
+        for (int i = 0; i <= bookCounter; i++)
+        {
+            cout << setw(20) << title[i] << setw(20) << author[i] << setw(20) << publishDate[i] << endl;
+        }
+        return 0;
     }
 
-    void searchBook()
+    int searchBook()
     { // search book through title
+        if (bookCounter == 0)
+        {
+            cout << "No Books In The Library To Search For, Try Adding Some in the Menu." << endl;
+            return 0;
+        }
         cout << "Enter title to search: ";
-        cin.ignore();
-        getline(cin, title);
-    }
+        // cin.ignore();
+        getline(cin, titleMatch);
+        for (int j = 0; j <= bookCounter; j++)
+        {
+            if (titleMatch == title[j])
+            {
+                cout << setw(20) << "Title" << setw(20) << "Author" << setw(20) << "Year" << endl;
+                cout << setw(20) << title[j] << setw(20) << author[j] << setw(20) << publishDate[j] << endl;
+                cout << "Book Found Successfully!" << endl;
+                return 0;
+            }
+            else if(titleMatch != title[j])
+            {
+                cout << "Checking..." << endl;
+            };
+        }
+        return 0;
+    } 
 };
 
 int main()
@@ -53,7 +87,7 @@ int main()
     Library s;
 
     do
-    {
+    {   cout << endl;
         cout << "Menu" << endl; // menu
         cout << "1. Add Book" << endl;
         cout << "2. Display Book" << endl;
@@ -73,6 +107,7 @@ int main()
                 s.addBook();
                 cout << "Would you like to add more? (Y/N): ";
                 cin >> addMoreBook;
+                cin.ignore();
             } while (addMoreBook == 'y' || addMoreBook == 'Y');
 
             break;
@@ -80,7 +115,7 @@ int main()
             s.displayBook();
             break;
         case 3:
-            // search book
+            s.searchBook();
             break;
         case 4:
             exit = false;
