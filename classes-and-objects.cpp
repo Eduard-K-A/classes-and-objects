@@ -108,7 +108,7 @@ int main()
             } while (addMoreBook == 'y' || addMoreBook == 'Y');
 
             break;
-        case 2:
+        case 2:s
             s.displayBook();
             break;
         case 3:
