@@ -22,7 +22,6 @@ public:
 
         cout << "Enter Author name: ";
         getline(cin, author[bookCounter]);
-        
        
         cout << "Enter Publication Year: ";
         getline(cin, publishDate[bookCounter]);
